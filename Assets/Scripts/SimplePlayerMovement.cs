@@ -6,6 +6,7 @@ public class SimplePlayerMovement : MonoBehaviour
     public float moveSpeed = 6.0f;
     Vector2 inputVector;
     public Transform playerMesh;
+    public Transform cameraTransform;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,14 +16,23 @@ public class SimplePlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 move = new Vector3(inputVector.x, 0, inputVector.y);
+        Vector3 camForward = cameraTransform.forward;
+        Vector3 camRight = cameraTransform.right;
+
+        camForward.y = 0f;
+        camRight.y = 0f;
+
+        camForward.Normalize();
+        camRight.Normalize();
+        Vector3 move = camForward * inputVector.y + camRight * inputVector.x;
 
         controller.Move(move * moveSpeed * Time.deltaTime);
 
-        if (move != Vector3.zero)
+        if (move.sqrMagnitude > 0.001f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(move);
-            playerMesh.rotation = Quaternion.Slerp(playerMesh.rotation, targetRotation, 10f * Time.deltaTime);
+            playerMesh.rotation = Quaternion.Slerp(playerMesh.rotation, targetRotation,
+                10f * Time.deltaTime);
         }
     }
 
