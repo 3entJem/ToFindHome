@@ -7,6 +7,9 @@ public class SimplePlayerMovement : MonoBehaviour
     Vector2 inputVector;
     public Transform playerMesh;
     public Transform cameraTransform;
+    public Animator animator;
+    public bool isMoving = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,10 +37,21 @@ public class SimplePlayerMovement : MonoBehaviour
             playerMesh.rotation = Quaternion.Slerp(playerMesh.rotation, targetRotation,
                 10f * Time.deltaTime);
         }
+
+        
     }
 
     public void OnMove(InputValue value)
     {
         inputVector = value.Get<Vector2>();
+
+        if (inputVector.sqrMagnitude > 0.001f)
+        {
+            animator.Play("Run");
+        }
+        else
+        {
+            animator.Play("idle");
+        }
     }
 }

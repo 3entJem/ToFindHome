@@ -776,6 +776,8 @@ MonoBehaviour:
   moveSpeed: 6
   playerMesh: {fileID: 1179249591}
   cameraTransform: {fileID: 1065526041}
+  animator: {fileID: 1179249594}
+  isMoving: 0
 --- !u!143 &1179249589
 CharacterController:
   m_ObjectHideFlags: 0
@@ -873,6 +875,11 @@ MonoBehaviour:
   - {fileID: 1565167114}
   - {fileID: 1632521496}
   - {fileID: 54704376}
+--- !u!95 &1179249594 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 0f85e6e65a32b05419b368b3fec912ef, type: 3}
+  m_PrefabInstance: {fileID: 1995604883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1272512600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9029996958471956169, guid: 0f85e6e65a32b05419b368b3fec912ef, type: 3}
@@ -1138,6 +1145,10 @@ PrefabInstance:
     - target: {fileID: -3284864748197893323, guid: 0f85e6e65a32b05419b368b3fec912ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 173.677
+      objectReference: {fileID: 0}
+    - target: {fileID: -3082220149752740066, guid: 0f85e6e65a32b05419b368b3fec912ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00554464
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0f85e6e65a32b05419b368b3fec912ef, type: 3}
       propertyPath: m_Name
